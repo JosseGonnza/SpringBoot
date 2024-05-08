@@ -1,13 +1,13 @@
-package com.jossegonnza.aplicationrest;
+package com.jossegonnza.applicationrest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AplicationRestApplication {
+public class ApplicationRestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AplicationRestApplication.class, args);
+		SpringApplication.run(ApplicationRestApplication.class, args);
 	}
 
 }
