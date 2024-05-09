@@ -32,4 +32,13 @@ public class APIController {
         this.listado.add(dato);
         return dato;
     }
+
+    @GetMapping("/{id}")
+    public Dato show(@PathVariable("id") Long id){
+        return this.listado
+                .stream()
+                .filter(dato -> dato.getId().equals(id))
+                .findFirst().orElse(new Dato());
+    }
+
 }
