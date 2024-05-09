@@ -17,6 +17,8 @@ public class APIController {
     public APIController() {
         this.listado.add(new Dato(1L, "Twitch"));
         this.lastId = 1L;
+        this.listado.add(new Dato(2L, "YouTube"));
+        this.lastId = 2L;
     }
 
     // GET /api/v1/dato/ -> Listado de datos
@@ -39,6 +41,19 @@ public class APIController {
                 .stream()
                 .filter(dato -> dato.getId().equals(id))
                 .findFirst().orElse(new Dato());
+    }
+
+    @PatchMapping("/{id}")
+    public Dato update(@PathVariable("id") Long id, @RequestBody Dato dato) {
+        return this.listado
+                .stream()
+                .filter(datoDB -> datoDB.getId().equals(id))
+                .findFirst()
+                .map(datoDB -> {
+                    datoDB.setCadena(dato.getCadena());
+                    return datoDB;
+                }).orElse(new Dato());
+        //Al estar ya definido, necesitamos otro nombre para el dato con el que vamos a trabajar
     }
 
 }
