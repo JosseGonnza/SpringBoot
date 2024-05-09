@@ -1,9 +1,7 @@
 package com.jossegonnza.applicationrest.controllers;
 
 import com.jossegonnza.applicationrest.dtos.Dato;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,4 +25,11 @@ public class APIController {
         return this.listado;
     }
 
+    // POST /api/v1/dato/ -> Listado de datos
+    @PostMapping("/")
+    public Dato create(@RequestBody Dato dato) {
+        dato.setId(++this.lastId);
+        this.listado.add(dato);
+        return dato;
+    }
 }
